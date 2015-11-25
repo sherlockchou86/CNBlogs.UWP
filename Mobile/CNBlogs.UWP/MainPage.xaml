@@ -1,0 +1,180 @@
+﻿<Page
+    x:Class="CNBlogs.UWP.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CNBlogs.UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <SplitView Name="mainSplitView" DisplayMode="CompactOverlay" CompactPaneLength="43" OpenPaneLength="120">
+            <SplitView.Pane>
+                <ListBox Name="mainNavigationList"
+                         SelectionMode="Single"
+                         SelectionChanged="mainNavigationList_SelectionChanged">
+                    <ListBoxItem Tag="0" Tapped="ListBoxItem_Tapped" Name="menuItem">  <!-- 汉堡按钮 -->
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE700;" 
+                                       FontSize="20" 
+                                       FontFamily="Segoe MDL2 Assets"/>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Tag="1" Tapped="ListBoxItem_Tapped" Name="homeItem"> <!--首页-->
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE80F;" 
+                                       FontSize="20" 
+                                       FontFamily="Segoe MDL2 Assets"
+                                       Padding="0,4,0,0"/>
+                            <TextBlock Text="首页" 
+                                       FontSize="18"
+                                       FontFamily="微软雅黑"
+                                       Margin="12,0,0,0"/>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Tag="2" Tapped="ListBoxItem_Tapped" Name="newsItem">  <!--新闻-->
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE763;" 
+                                       FontSize="20" 
+                                       FontFamily="Segoe MDL2 Assets"
+                                       TextAlignment="Center"
+                                       Padding="0,4,0,0"/>
+                            <TextBlock Text="新闻" 
+                                       FontSize="18"
+                                       FontFamily="微软雅黑"
+                                       Margin="12,0,0,0"/>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Tag="3" Tapped="ListBoxItem_Tapped" Name="rankItem"> <!--排行榜-->
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE71D;" 
+                                       FontSize="20" 
+                                       FontFamily="Segoe MDL2 Assets"
+                                       TextAlignment="Center"
+                                       Padding="0,4,0,0"/>
+                            <TextBlock Text="琅琊榜" 
+                                       FontSize="18"
+                                       FontFamily="微软雅黑"
+                                       Margin="12,0,0,0"/>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Tag="4"  Tapped="ListBoxItem_Tapped" Visibility="Collapsed" Name="flashItem"> <!--闪存-->
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE25C;" 
+                                       FontSize="20" 
+                                       FontFamily="Segoe MDL2 Assets"
+                                       TextAlignment="Center"
+                                       Padding="0,4,0,0"/>
+                            <TextBlock Text="闪存" 
+                                       FontSize="18"
+                                       FontFamily="微软雅黑"
+                                       Margin="12,0,0,0"/>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Tag="5" Tapped="ListBoxItem_Tapped" Visibility="Collapsed" Name="msgItem"> <!--站内信-->
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE715;" 
+                                       FontSize="20" 
+                                       FontFamily="Segoe MDL2 Assets"
+                                       TextAlignment="Center"
+                                       Padding="0,4,0,0"/>
+                            <TextBlock Text="站内信" 
+                                       FontSize="18"
+                                       FontFamily="微软雅黑"
+                                       Margin="12,0,0,0"/>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Tag="6" Tapped="ListBoxItem_Tapped" Visibility="Collapsed" Name="collectionItem"> <!--收藏-->
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE1CE;" 
+                                       FontSize="20" 
+                                       FontFamily="Segoe MDL2 Assets"
+                                       TextAlignment="Center"
+                                       Padding="0,4,0,0"/>
+                            <TextBlock Text="收藏" 
+                                       FontSize="18"
+                                       FontFamily="微软雅黑"
+                                       Margin="12,0,0,0"/>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Tag="7" Tapped="ListBoxItem_Tapped" Name="searchItem"> <!--搜索-->
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE721;" 
+                                       FontSize="20" 
+                                       FontFamily="Segoe MDL2 Assets"
+                                       TextAlignment="Center"
+                                       Padding="0,4,0,0"/>
+                            <TextBlock Text="搜索" 
+                                       FontSize="18"
+                                       FontFamily="微软雅黑"
+                                       Margin="12,0,0,0"/>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem IsEnabled="False" Padding="0,10,0,10">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock 
+                                Text="——————————————————————"
+                                Padding="0"
+                                Margin="0"/>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Tag="8" Tapped="ListBoxItem_Tapped" Name="LoginItem"> <!--登录-->
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE2AF;" 
+                                       FontSize="20" 
+                                       FontFamily="Segoe MDL2 Assets"
+                                       TextAlignment="Center"
+                                       Padding="0,4,0,0"
+                                       Name="LoginIcon"
+                                       />
+                            <Image Name="Avatar"
+                                   Visibility="Collapsed"
+                                   VerticalAlignment="Center"
+                                   Margin="0"
+                                   Width="30">
+                                
+                            </Image>
+                            <TextBlock Text="登录" 
+                                       FontSize="18"
+                                       FontFamily="微软雅黑"
+                                       Margin="12,0,0,0"
+                                       Name="NickNameOrTip"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Tag="9" Tapped="ListBoxItem_Tapped" Visibility="Collapsed" Name="logoutItem"> <!--注销-->
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE25B;" 
+                                       FontSize="20" 
+                                       FontFamily="Segoe MDL2 Assets"
+                                       TextAlignment="Center"
+                                       Padding="0,4,0,0"/>
+                            <TextBlock Text="注销" 
+                                       FontSize="18"
+                                       FontFamily="微软雅黑"
+                                       Margin="12,0,0,0"/>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Tag="10" Tapped="ListBoxItem_Tapped" Name="settingItem"> <!--设置-->
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE713;" 
+                                       FontSize="20" 
+                                       FontFamily="Segoe MDL2 Assets"
+                                       TextAlignment="Center"
+                                       Padding="0,4,0,0"/>
+                            <TextBlock Text="设置" 
+                                       FontSize="18"
+                                       FontFamily="微软雅黑"
+                                       Margin="12,0,0,0"/>
+                        </StackPanel>
+                    </ListBoxItem>
+                </ListBox>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <Frame Name="mainFrame">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="hello world"></TextBlock>
+                </Frame>
+            </SplitView.Content>
+        </SplitView>
+    </Grid>
+</Page>

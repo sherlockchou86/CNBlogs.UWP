@@ -1,0 +1,47 @@
+﻿<ContentDialog
+    x:Class="CNBlogs.UWP.SendMsgDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CNBlogs.UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="发送站内信"
+    PrimaryButtonText="发送"
+    SecondaryButtonText="取消"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick"
+    FullSizeDesired="False">
+
+    <Grid>
+        <StackPanel>
+            <TextBox Name="To"
+                     Header="收信人"
+                     Margin="0,10,0,0"
+                     PlaceholderText="填写收件人昵称">
+            </TextBox>
+            <TextBox Name="Title"
+                     Header="标题"
+                     Margin="0,10,0,0"
+                     PlaceholderText="标题不为空">
+                
+            </TextBox>
+            <TextBox Name="Content"
+                     Header="内容"
+                     TextWrapping="Wrap"
+                     Margin="0,10,0,0"
+                     PlaceholderText="回车换行"
+                     />
+            <ProgressBar Name="Sending"
+                         Margin="0,10,0,0"
+                         IsIndeterminate="True"
+                         Visibility="Collapsed">
+            </ProgressBar>
+            <TextBlock Name="Tip"
+                       Foreground="Red"
+                       Margin="0,10,0,0">
+                
+            </TextBlock>
+        </StackPanel>
+    </Grid>
+</ContentDialog>

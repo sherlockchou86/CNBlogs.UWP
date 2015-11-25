@@ -1,0 +1,2 @@
+MainPackage=E:\周智2015\githubs\CNBlogs.UWP\PC\CNBlogs.UWP\bin\x64\Release\Upload\CNBlogs.UWP_1.1.0.0_x64.appx
+SymbolPackage=E:\周智2015\githubs\CNBlogs.UWP\PC\CNBlogs.UWP\AppPackages\CNBlogs.UWP_1.1.0.0\CNBlogs.UWP_1.1.0.0_x64.appxsym

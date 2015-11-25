@@ -1,0 +1,107 @@
+﻿<Page
+    x:Class="CNBlogs.UWP.BlogCommentPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CNBlogs.UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <RelativePanel Grid.Row="0"
+                       Background="{ThemeResource SystemControlHighlightAltListAccentLowBrush}"
+                       Padding="0,9,0,9">
+            <!--顶部-->
+            <Button Name="Home"
+                    Content="&#xE700;"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="24"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    RelativePanel.AlignVerticalCenterWithPanel="True"
+                    Background="Transparent"
+                    Click="Home_Click"
+                    >
+            </Button>
+            <Button Name="Back"
+                    Content="&#xE0A6;"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="24"
+                    RelativePanel.RightOf="Home"
+                    RelativePanel.AlignVerticalCenterWithPanel="True"
+                    Background="Transparent"
+                    Click="Back_Click"
+                    >
+            </Button>
+            <TextBlock Name="PageTitle"
+                       Text="博客评论"
+                       RelativePanel.RightOf="Back"
+                       RelativePanel.AlignVerticalCenterWithPanel="True"
+                       FontSize="24"
+                       FontFamily="微软雅黑"
+                       Padding="10,0,0,0">
+            </TextBlock>
+            <Button Name="RefreshButton"
+                    Content="&#xE117;"
+                    RelativePanel.AlignRightWithPanel="True"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="24"
+                    RelativePanel.AlignVerticalCenterWithPanel="True"
+                    Margin="0,0,5,0"
+                    Background="Transparent"
+                    Click="RefreshButton_Click">
+            </Button>
+        </RelativePanel>
+        <StackPanel Grid.Row="1">
+            <TextBlock Name="BlogTitle"
+                       Text="微信客户端.NET版"
+                       HorizontalAlignment="Center"
+                       FontSize="25"
+                       Margin="0,10,0,0">
+            </TextBlock>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Margin="0,10,0,10">
+                <HyperlinkButton Name="Author"
+                                 Content="周见智"
+                                 Foreground="Gray"
+                                 Padding="0"
+                                 Click="Author_Click">
+                </HyperlinkButton>
+                <TextBlock Name="PubishTime"
+                           Text="发表于 2015-12-12 12:10:10"
+                           Foreground="Gray"
+                           Margin="10,0,0,0"
+                           VerticalAlignment="Center">
+                </TextBlock>
+            </StackPanel>
+            <Rectangle Height="1"
+                       Fill="LightGray">
+            </Rectangle>
+        </StackPanel>
+        <WebView Name="BlogComment"
+                 Grid.Row="2"
+                 ScriptNotify="BlogComment_ScriptNotify">
+        </WebView>
+        <ProgressRing Grid.Row="2"
+                      Name="Loading"
+                      Width="100"
+                      Height="100"
+                      IsActive="True">
+            
+        </ProgressRing>
+        <AutoSuggestBox Name="MyComment"
+                        Grid.Row="3"
+                        PlaceholderText="输入评论"
+                        QueryIcon="Accept"
+                        QuerySubmitted="MyComment_QuerySubmitted">
+            
+        </AutoSuggestBox>
+    </Grid>
+</Page>

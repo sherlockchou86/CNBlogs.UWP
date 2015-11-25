@@ -1,0 +1,67 @@
+﻿<ContentDialog
+    x:Class="CNBlogs.UWP.AboutDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CNBlogs.UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="关于"
+    PrimaryButtonText="确定"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    >
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0"
+                   Text="声明"
+                   FontWeight="Bold"
+                   Margin="0,10,0,0">
+        </TextBlock>
+        <TextBlock Grid.Row="1"
+                   Text="本软件基于博客园(cnblogs)网站开发，非官方发布。"
+                   TextWrapping="Wrap">
+        </TextBlock>
+        <TextBlock Grid.Row="2"
+                   Text="作者"
+                   FontWeight="Bold"
+                   Margin="0,10,0,0">
+        </TextBlock>
+        <RelativePanel Grid.Row="3">
+            <Image RelativePanel.AlignLeftWithPanel="True"
+                   RelativePanel.AlignVerticalCenterWithPanel="True"
+                   Source="Assets\Images\myavator.png"
+                   Height="80"
+                   Name="Avator">
+            </Image>
+            <TextBlock RelativePanel.RightOf="Avator"
+                       RelativePanel.Above="MyWebsite"
+                       Padding="10,0,0,0"
+                       Text="周见智"
+                       >
+                
+            </TextBlock>
+            <HyperlinkButton NavigateUri="http://xiaozhi_5638.cnblogs.com/"
+                             Name="MyWebsite"
+                             RelativePanel.RightOf="Avator"
+                             RelativePanel.Above="MyGithub"
+                             Content="http://xiaozhi_5638.cnblogs.com/"
+                             Margin="10,0,0,0">
+                
+            </HyperlinkButton>
+            <HyperlinkButton NavigateUri="http://www.github.com/sherlockchou86/"
+                             RelativePanel.RightOf="Avator"
+                             RelativePanel.AlignBottomWithPanel="True"
+                             Content="https://www.github.com/sherlockchou86/"
+                             Name="MyGithub"
+                             Margin="10,0,0,0">
+                
+            </HyperlinkButton>
+        </RelativePanel>
+    </Grid>
+</ContentDialog>

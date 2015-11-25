@@ -1,0 +1,87 @@
+﻿<Page
+    x:Class="CNBlogs.UWP.FlashPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CNBlogs.UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <!--适应布局-->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="visualStateGroup1">
+                <VisualState x:Name="wideScreen">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1000">
+                        </AdaptiveTrigger>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="FlashListView.(Grid.ColumnSpan)" Value="1"></Setter>
+                        <Setter Target="FlashContent.Visibility" Value="Visible"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="narrowScreen">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0">
+                        </AdaptiveTrigger>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="FlashListView.(Grid.ColumnSpan)" Value="2"></Setter>
+                        <Setter Target="FlashContent.Visibility" Value="Collapsed"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <RelativePanel Grid.Row="0"
+                       Background="{ThemeResource SystemControlHighlightAltListAccentLowBrush}"
+                       Padding="0,9,0,9">
+            <!--顶部-->
+            <TextBlock Name="PageTitle"
+                       Text="闪存"
+                       RelativePanel.AlignLeftWithPanel="True"
+                       RelativePanel.AlignVerticalCenterWithPanel="True"
+                       FontSize="24"
+                       FontFamily="微软雅黑"
+                       Padding="20,0,0,0">
+            </TextBlock>
+            <Button Name="RefreshButton"
+                    Content="&#xE117;"
+                    RelativePanel.AlignRightWithPanel="True"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="24"
+                    RelativePanel.AlignVerticalCenterWithPanel="True"
+                    Margin="0,0,5,0"
+                    Background="Transparent">
+            </Button>
+        </RelativePanel>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <ListView Grid.Column="0"
+                      Padding="10,10,10,10"
+                      Name="FlashListView"
+                      SelectionMode="Single"
+                      IsItemClickEnabled="True"
+                      SelectionChanged="FlashListView_SelectionChanged">
+                <ListViewItem>
+                    <TextBlock Text="闪存没做，你可以完善该功能...">
+                        
+                    </TextBlock>
+                </ListViewItem>
+            </ListView>
+            <Frame Grid.Column="1"
+                   Width="400"
+                   Name="FlashContent"
+                   Padding="0,10,0,0">
+                
+            </Frame>
+        </Grid>
+    </Grid>
+</Page>

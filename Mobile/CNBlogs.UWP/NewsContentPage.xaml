@@ -1,0 +1,160 @@
+﻿<Page
+    x:Class="CNBlogs.UWP.NewsContentPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CNBlogs.UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <RelativePanel Grid.Row="0"
+                       Background="{ThemeResource SystemControlHighlightAltListAccentLowBrush}"
+                       Padding="0,6,0,6">
+            <!--顶部-->
+            <Button Name="Home"
+                    Content="&#xE700;"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="20"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    RelativePanel.AlignVerticalCenterWithPanel="True"
+                    Background="Transparent"
+                    Click="Home_Click"
+                    >
+            </Button>
+            <Button Name="Back"
+                    Content="&#xE0A6;"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="20"
+                    RelativePanel.RightOf="Home"
+                    RelativePanel.AlignVerticalCenterWithPanel="True"
+                    Background="Transparent"
+                    Click="Back_Click"
+                    >
+
+            </Button>
+            <TextBlock Name="PageTitle"
+                       Text="新闻正文"
+                       RelativePanel.RightOf="Back"
+                       RelativePanel.AlignVerticalCenterWithPanel="True"
+                       FontSize="18"
+                       FontFamily="微软雅黑"
+                       Padding="10,0,0,0">
+            </TextBlock>
+            <Button Name="RefreshButton"
+                    Content="&#xE117;"
+                    RelativePanel.AlignRightWithPanel="True"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="20"
+                    RelativePanel.AlignVerticalCenterWithPanel="True"
+                    Margin="0,0,5,0"
+                    Background="Transparent"
+                    Click="RefreshButton_Click">
+            </Button>
+            <Button Name="Comment"
+                    RelativePanel.LeftOf="RefreshButton"
+                    RelativePanel.AlignVerticalCenterWithPanel="True"
+                    Content="&#xE939;"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="20"
+                    Background="Transparent"
+                    Margin="0,0,10,0"
+                    Click="Comment_Click">
+            </Button>
+            <Button Name="Digg"
+                    RelativePanel.LeftOf="Comment"
+                    RelativePanel.AlignVerticalCenterWithPanel="True"
+                    Content="&#xE19F;"
+                    Background="Transparent"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="20"
+                    Click="Digg_Click">
+
+            </Button>
+            <Button Name="Collect"
+                    RelativePanel.LeftOf="Digg"
+                    RelativePanel.AlignVerticalCenterWithPanel="True"
+                    Content="&#xE728;"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="20"
+                    Background="Transparent"
+                    Click="Collect_Click">
+
+            </Button>
+        </RelativePanel>
+        <StackPanel Grid.Row="1">
+            <TextBlock Name="BlogTitle"
+                       Text="微软Surface Pro 4京东天猫全面预订"
+                       HorizontalAlignment="Center"
+                       FontSize="18"
+                       Margin="0,8,0,0">
+            </TextBlock>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Margin="0,10,0,10">
+                <TextBlock Name="NewsSource"
+                           Text="来源 新浪科技"
+                           FontSize="12"
+                           Visibility="Collapsed"
+                           Foreground="Gray">
+                </TextBlock>
+                <TextBlock Name="PublishTime"
+                           Text="发表于 2015-11-10 23:10:11"
+                           Foreground="Gray"
+                           FontSize="12"
+                           Padding="2,0,0,0">
+                </TextBlock>
+                <TextBlock Name="Diggs"
+                           Text="(21)推荐"
+                           FontSize="12"
+                           Padding="2,0,2,0"
+                           Foreground="Gray">
+                </TextBlock>
+                <SymbolIcon Symbol="Like"
+                            Tapped="SymbolIcon_Tapped">
+                    
+                </SymbolIcon>
+                <TextBlock Name="Comments"
+                           Text="(3)评论"
+                           Padding="2,0,2,0"
+                           FontSize="12"
+                           Foreground="Gray"
+                           >
+                </TextBlock>
+                <SymbolIcon Symbol="Comment"
+                            Tapped="SymbolIcon_Tapped"></SymbolIcon>
+                <TextBlock Name="Views"
+                           Text="(211)阅读"
+                           FontSize="12"
+                           Padding="2,0,2,0"
+                           Foreground="Gray">
+                </TextBlock>
+                <SymbolIcon Symbol="View"
+                            >
+
+                </SymbolIcon>
+            </StackPanel>
+            <Rectangle Height="1"
+                       Fill="LightGray">
+            </Rectangle>
+        </StackPanel>
+        <Grid Grid.Row="2">
+
+            <WebView Name="NewsContent"
+                     >
+            </WebView>
+            <ProgressRing Name="Loading"
+                          IsActive="True"
+                          Width="100"
+                          Height="100">
+                
+            </ProgressRing>
+        </Grid>
+    </Grid>
+</Page>
