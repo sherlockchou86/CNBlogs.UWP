@@ -108,40 +108,33 @@ namespace CNBlogs.UWP
                     return;
                 string js_login = "var o = document.getElementById('tip_btn'); if(o) o.innerText;";
 
-                await LogintWebView.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
-                {
-                    login_result = await LogintWebView.InvokeScriptAsync("eval", new string[] { js_login });
-                }
-                );
+                login_result = await LogintWebView.InvokeScriptAsync("eval", new string[] { js_login });
                 if (login_result.Contains("成功"))
                 {
                     return;
                 }
-                await LogintWebView.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
+                Tip.Text = login_result;
+                if (_doLogin)
                 {
-                    Tip.Text = login_result;
-                    if (_doLogin)
+                    if (login_result.Contains("错误") || login_result.Contains("失败") || login_result.Contains("不存在")
+                    ||login_result.Contains("锁定"))  //一系列错误
                     {
-                        if (login_result.Contains("错误") || login_result.Contains("失败") || login_result.Contains("不存在")
-                        ||login_result.Contains("锁定"))  //一系列错误
+                        _doLogin = false;
+                        if (CaptchaImg.Visibility == Visibility.Visible)
                         {
-                            _doLogin = false;
-                            if (CaptchaImg.Visibility == Visibility.Visible)
-                            {
-                                PrimaryButtonText = "加载验证码...";
-                                LogintWebView.Navigate(new Uri(_login_url_redirect));
-                                CaptchaImg_Input.Visibility = Visibility.Collapsed;
-                                CaptchaImg.Visibility = Visibility.Collapsed;
-                                Logining.IsActive = true;
-                            }
-                            else
-                            {
-                                IsPrimaryButtonEnabled = true;
-                                Logining.IsActive = false;
-                            }
+                            PrimaryButtonText = "加载验证码...";
+                            LogintWebView.Navigate(new Uri(_login_url_redirect));
+                            CaptchaImg_Input.Visibility = Visibility.Collapsed;
+                            CaptchaImg.Visibility = Visibility.Collapsed;
+                            Logining.IsActive = true;
+                        }
+                        else
+                        {
+                            IsPrimaryButtonEnabled = true;
+                            Logining.IsActive = false;
                         }
                     }
-                });
+                }
                 await Task.Delay(1000);
                 CheckLoginState();        
             }
